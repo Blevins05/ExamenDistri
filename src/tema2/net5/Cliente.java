@@ -28,10 +28,26 @@ public class Cliente {
 			
 			dos.writeBytes(nombre + "\n");
 			dos.writeLong(tamano);
+
+			// primera mitad:
+			long mitad = tamano / 2;
 			
+			int leidos_linea, leidos_total = 0;
+			byte[] buff = new byte[1024];
+			while(leidos_total < mitad) {
+				leidos_linea = fis.read(buff);
+				dos.write(buff, 0, leidos_linea);
+				leidos_total += leidos_linea;
+			}
+			dos.flush();
 			
+			dos.writeBytes("He mandado la mitad\n");
 			
-			
+		
+			// segunda mitad:
+			while ((leidos_linea = fis.read(buff)) != -1) {
+				dos.write(buff, 0, leidos_linea);
+			}
 			
 			
 		} catch (IOException ex) {
