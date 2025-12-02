@@ -32,7 +32,7 @@ public class Hilo extends Thread {
 			fileName += "index.html";
 				}
 			}
-		return new File("C:\\Users\\TrendingPC\\eclipse-workspace", fileName);
+		return new File("ruta donde tengas el fichero descargado", fileName);
 		}
 		
 	private void sendMIMEHeading(OutputStream os, int code, String cType, long fSize) {
