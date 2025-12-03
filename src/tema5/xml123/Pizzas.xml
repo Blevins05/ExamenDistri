@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pizzas SYSTEM "Pizzas.dtd">
+<pizzas>
+
+  <!-- Pizza 1: Margherita -->
+  <pizza nombre="margherita" precio="8.50">
+    <ingrediente>Tomate</ingrediente>
+    <ingrediente>Queso Mozzarella</ingrediente>
+    <ingrediente>Albahaca</ingrediente>
+  </pizza>
+
+  <!-- Pizza 2: Napolitana -->
+  <pizza nombre="napolitana" precio="9.00">
+    <ingrediente>Tomate</ingrediente>
+    <ingrediente>Queso Mozzarella</ingrediente>
+    <ingrediente>Anchoas</ingrediente>
+    <ingrediente>Albahaca</ingrediente>
+  </pizza>
+
+  <!-- Pizza 3: Cuatro Quesos -->
+  <pizza nombre="cuatro quesos" precio="10.00">
+    <ingrediente>Queso Mozzarella</ingrediente>
+    <ingrediente>Queso Gorgonzola</ingrediente>
+    <ingrediente>Queso Parmesano</ingrediente>
+    <ingrediente>Queso Fontina</ingrediente>
+    <oferta/>
+  </pizza>
+
+  <!-- Pizza 4: Carbonara -->
+  <pizza nombre="carbonara" precio="11.50">
+    <ingrediente>Panceta</ingrediente>
+    <ingrediente>Crema de leche</ingrediente>
+    <ingrediente>Huevo</ingrediente>
+    <ingrediente>Queso Pecorino</ingrediente>
+  </pizza>
+
+  <!-- Pizza 5: Pepperoni -->
+  <pizza nombre="pepperoni" precio="9.50">
+    <ingrediente>Tomate</ingrediente>
+    <ingrediente>Queso Mozzarella</ingrediente>
+    <ingrediente>Pepperoni</ingrediente>
+     <oferta/>
+  </pizza>
+
+</pizzas>
+
