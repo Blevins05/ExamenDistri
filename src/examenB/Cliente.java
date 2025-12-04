@@ -39,8 +39,8 @@ public class Cliente {
 						int M = Integer.parseInt(sc.nextLine());
 						 pw.println("GET /primos?N=" + N + "&M=" + M + " HTTP/1.1");
 	                        pw.println("Host: localhost");
-	                        pw.println("Connection: keep-alive");
-	                        pw.println(); // MUY IMPORTANTE
+	                        pw.println("Connection: close");
+	                        pw.println(""); // MUY IMPORTANTE
 	                        obtenerRespuesta(bfr);
 						break;
 					case 2:
@@ -49,7 +49,8 @@ public class Cliente {
 						  pw.println("GET /rsa?num=" + num + " HTTP/1.1");
 	                      pw.println("Host: localhost");
 	                      pw.println("Connection: keep-alive");
-	                      pw.println(); // mandamos linea en blanco
+	                      pw.println(""); // mandamos linea en blanco
+	                      pw.flush();
 	                      obtenerRespuesta(bfr);
 	                       
 						break;
@@ -71,16 +72,32 @@ public class Cliente {
 	}
 
 	public static void obtenerRespuesta(BufferedReader bfr) {
-		// TODO Auto-generated method stub
-		String linea;
-		try {
-			while ((linea = bfr.readLine()) != null) {
-				System.out.println(linea);	
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	    try {
+	        // 1) Leer línea de estado
+	        String linea = bfr.readLine();
+	        System.out.println(linea);
+
+	        int contentLength = 0;
+
+	        // 2) Leer cabeceras hasta línea vacía
+	        while (!(linea = bfr.readLine()).equals("")) {
+	            System.out.println(linea);
+
+	            if (linea.startsWith("Content-Length:"))
+	                contentLength = Integer.parseInt(linea.split(":")[1].trim());
+	        }
+
+	        // 3) Leer exactamente contentLength caracteres del cuerpo
+	        char[] buffer = new char[contentLength];
+	        bfr.read(buffer, 0, contentLength);
+
+	        System.out.println(new String(buffer));
+
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
 	}
+
+
 
 }
